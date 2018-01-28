@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script  src="easeljs-0.8.2.min.js"></script>
+    <script  src="jquery-1.8.3.js"></script>
+</head>
+<body>
+
+ <canvas id="gameView" width="800px" height="400px">
+
+ </canvas>
+sadsadfsfdsfed
+</body>
+<script >
+    var canvas;
+    var count=0;
+    var  stage;
+    var text;
+    var rect;
+    canvas = document.getElementById("gameView");
+    stage = new createjs.Stage(canvas);
+    text =new createjs.Text("text on the canvas ...0!","36px Arial","#FFF");
+    text.x = 100;
+    text.y=100;
+    text.rotation= 20;
+    stage.addChild(text);
+
+    rect = new createjs.Shape();
+    rect.graphics.clear().beginFill("#f00").drawRect(-10,-10,text.getMeasuredWidth()+20,50);
+    rect.x=text.x;
+    rect.y=text.y;
+    rect.rotation=text.rotation;
+    stage.addChildAt(rect,0)
+
+    createjs.Ticker.setFPS(100);
+    createjs.Ticker.addEventListener("tick",handlertick);
+
+    function  handlertick(e){
+        count++;
+        text.text="text on the canvas ..."+count+"!";
+        rect.graphics.clear().beginFill("#f00").drawRect(-10,-10,text.getMeasuredWidth()+20,50);
+        stage.update();
+    }
+
+
+
+</script>
+</html>
